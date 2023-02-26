@@ -26,10 +26,15 @@ function baseXor(arrays, iteratee, comparator) {
 
     while (++othIndex < length) {
       if (othIndex != index) {
+        // 从第一个 arrays 的第一个子元素数组开始
+        // 过滤 arrays 的数组子元素，同时返回新的数组
+        // 新数组的元素都是数组
         result[index] = baseDifference(result[index] || array, arrays[othIndex], iteratee, comparator)
       }
     }
   }
+  // 子元素如果还是数组就会解构，放在外层
+  // 去掉重复的元素
   return baseUniq(baseFlatten(result, 1), iteratee, comparator)
 }
 
