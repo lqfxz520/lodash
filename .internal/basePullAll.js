@@ -26,11 +26,15 @@ function basePullAll(array, values, iteratee, comparator) {
   if (iteratee) {
     seen = map(array, (value) => iteratee(value))
   }
-  while (++index < length) {
+  while (++index < length) { // 对移除数组循环
     let fromIndex = 0
     const value = values[index]
     const computed = iteratee ? iteratee(value) : value
 
+    // 对目标数组循环，每次找匹配元素并记录匹配元素的索引
+    // 索引作用
+    // 1. 去除匹配元素
+    // 2. 接着对目标数组循环
     while ((fromIndex = indexOf(seen, computed, fromIndex, comparator)) > -1) {
       if (seen !== array) {
         seen.splice(fromIndex, 1)
