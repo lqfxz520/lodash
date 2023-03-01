@@ -26,13 +26,18 @@ function slice(array, start, end) {
   start = start == null ? 0 : start
   end = end === undefined ? length : end
 
-  if (start < 0) {
+  if (start < 0) { // 确保 start 变量不会是负数
     start = -start > length ? 0 : (length + start)
   }
   end = end > length ? length : end
   if (end < 0) {
     end += length
   }
+  // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Unsigned_right_shift
+  // 无符号右移
+  // 在 javascript，数字用64位二进制表示
+  // 无符号右移用32位二进制表示
+  // 这里的作用是确保为整数？
   length = start > end ? 0 : ((end - start) >>> 0)
   start >>>= 0
 

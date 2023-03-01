@@ -26,6 +26,7 @@ const MAX_INTEGER = 1.7976931348623157e+308
  * // => 3.2
  */
 function toFinite(value) {
+  // 防止传入非正整数，造成程序错误
   if (!value) {
     return value === 0 ? value : 0
   }
