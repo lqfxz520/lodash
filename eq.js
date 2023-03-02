@@ -28,6 +28,9 @@
  * eq(NaN, NaN)
  * // => true
  */
+
+// NaN !== NaN
+// 利用这一特点来判断是不是NaN
 function eq(value, other) {
   return value === other || (value !== value && other !== other)
 }

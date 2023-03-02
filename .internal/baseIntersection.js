@@ -46,6 +46,7 @@ function baseIntersection(arrays, iteratee, comparator) {
     const computed = iteratee ? iteratee(value) : value
 
     value = (comparator || value !== 0) ? value : 0
+    // computed 不包含目标数组继续执行
     if (!(seen
       ? cacheHas(seen, computed)
       : includes(result, computed, comparator)

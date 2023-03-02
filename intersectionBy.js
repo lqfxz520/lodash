@@ -22,6 +22,7 @@ import last from './last.js'
  */
 function intersectionBy(...arrays) {
   let iteratee = last(arrays)
+  // 预处理数据防止 js 报错
   const mapped = map(arrays, castArrayLikeObject)
 
   if (iteratee === last(mapped)) {
