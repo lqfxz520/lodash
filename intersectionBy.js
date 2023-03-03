@@ -25,9 +25,12 @@ function intersectionBy(...arrays) {
   // 预处理数据防止 js 报错
   const mapped = map(arrays, castArrayLikeObject)
 
+  // 假如 iteratee 为 function 对象就会被转化成空数组
+  // 因此 function === []，说明 iteratee 值有效
   if (iteratee === last(mapped)) {
     iteratee = undefined
   } else {
+    // 剔除因传入 function 对象造成的空数组
     mapped.pop()
   }
   return (mapped.length && mapped[0] === arrays[0])
