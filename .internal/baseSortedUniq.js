@@ -19,7 +19,7 @@ function baseSortedUniq(array, iteratee) {
   while (++index < length) {
     const value = array[index], computed = iteratee ? iteratee(value) : value
     // 第一位不用判断，也不用执行 eq 函数
-    // 相等不用跳过
+    // 相等的跳过
     if (!index || !eq(computed, seen)) {
       seen = computed
       result[resIndex++] = value === 0 ? 0 : value

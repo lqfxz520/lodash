@@ -32,7 +32,7 @@ function baseUniq(array, iteratee, comparator) {
   }
   else if (length >= LARGE_ARRAY_SIZE) {
     const set = iteratee ? null : createSet(array)
-    if (set) {
+    if (set) { // 已经转化为一个对象，只需要转化成数组格式
       return setToArray(set)
     }
     isCommon = false
@@ -61,6 +61,7 @@ function baseUniq(array, iteratee, comparator) {
       result.push(value)
     }
     else if (!includes(seen, computed, comparator)) {
+      // 有 iteratee 或数组长度大于 200 时，seen 和 result 不相等
       if (seen !== result) {
         seen.push(computed)
       }
