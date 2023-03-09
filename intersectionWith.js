@@ -30,6 +30,7 @@ function intersectionWith(...arrays) {
   if (comparator) {
     mapped.pop()
   }
+  // 第一个参数必须为数组，不然也就没有继续往下走的意义了
   return (mapped.length && mapped[0] === arrays[0])
     ? baseIntersection(mapped, undefined, comparator)
     : []

@@ -30,7 +30,12 @@ function baseIntersection(arrays, iteratee, comparator) {
     if (othIndex && iteratee) {
       array = map(array, (value) => iteratee(value))
     }
+    // 取得 arrays 元素下的数组的最短长度
     maxLength = Math.min(array.length, maxLength)
+    // 在没有自定义比较的情况下，存在 iteratee 或者 arrays 第一个数组并且剩下的数组长度超过 120
+    // 索引为 0 的时候，初始化个空的 Hash 数据结构
+    // 用来返回交集的数组
+    // 为什么长度设定为 120 呢？
     caches[othIndex] = !comparator && (iteratee || (length >= 120 && array.length >= 120))
       ? new SetCache(othIndex && array)
       : undefined
