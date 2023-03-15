@@ -23,6 +23,10 @@ function baseSortedIndex(array, value, retHighest) {
 
   if (typeof value === 'number' && value === value && high <= HALF_MAX_ARRAY_LENGTH) {
     while (low < high) {
+      // 第一步：求数组中间位置
+      // 第二步：比较 value 跟 中间位置的元素大小
+      // value 大于 中间元素时，设置中间位置为 数组的起点
+      // value 小于 中间元素时，设置中间位置为 数组的结束点
       const mid = (low + high) >>> 1
       const computed = array[mid]
       if (computed !== null && !isSymbol(computed) &&

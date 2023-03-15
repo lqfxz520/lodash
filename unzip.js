@@ -26,6 +26,8 @@ function unzip(array) {
     return []
   }
   let length = 0
+  // 得出最长的数组长度
+  // 去除非数组数据类型
   array = filter(array, (group) => {
     if (isArrayLikeObject(group)) {
       length = Math.max(group.length, length)
